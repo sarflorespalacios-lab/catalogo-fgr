@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Catalogo FGR</string>
+    <string name="title_activity_main">Catalogo FGR</string>
+    <string name="package_name">com.catalogo.fgr</string>
+    <string name="custom_url_scheme">com.catalogo.fgr</string>
+</resources>
