@@ -1,51 +1,20 @@
 import { auth, provider } from "../firebase";
-import {
-  signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult
-} from "firebase/auth";
-import { useState, useEffect } from "react";
+import { signInWithPopup } from "firebase/auth";
+import { useState } from "react";
 
 function Login() {
   const [cargando, setCargando] = useState(false);
-
-  // Detectar móvil o PWA
-  const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  useEffect(() => {
-    const revisarRedirect = async () => {
-      try {
-        const result = await getRedirectResult(auth);
-
-        if (result?.user) {
-          console.log("Usuario autenticado:", result.user);
-        }
-
-        setCargando(false);
-      } catch (error) {
-        console.error("Error redirect:", error);
-        setCargando(false);
-      }
-    };
-
-    revisarRedirect();
-  }, []);
 
   const login = async () => {
     try {
       setCargando(true);
 
-      if (esMovil) {
-        // En celular siempre redirect
-        await signInWithRedirect(auth, provider);
-      } else {
-        // En PC popup
-        const result = await signInWithPopup(auth, provider);
-        console.log("Usuario:", result.user);
-        setCargando(false);
-      }
+      const result = await signInWithPopup(auth, provider);
+      console.log("Usuario logueado:", result.user);
+
     } catch (error) {
       console.error("Error login:", error);
+    } finally {
       setCargando(false);
     }
   };
