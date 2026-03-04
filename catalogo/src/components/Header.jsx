@@ -2,9 +2,11 @@ import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 function Header() {
   const [user] = useAuthState(auth);
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
   const cerrarSesion = () => {
     signOut(auth);
@@ -47,7 +49,41 @@ function Header() {
           ❤️ Favoritos
         </NavLink>
 
+        {/* BOTÓN DEL MENÚ LATERAL */}
+        <button
+          className="btn-menu"
+          onClick={() => setMenuAbierto(true)}
+        >
+          ☰
+        </button>
+
       </nav>
+
+      {/* MENU LATERAL */}
+      {menuAbierto && (
+        <div className="menu-overlay">
+          <div className="menu-lateral">
+
+            <div className="menu-cerrar">
+              <button onClick={() => setMenuAbierto(false)}>✕</button>
+            </div>
+
+            <ul>
+              <li>💰 Créditos y Servicios Financieros</li>
+              <li>🛡 Seguros</li>
+              <li>🎬 Entretenimiento</li>
+              <li>🏨 Hoteles</li>
+              <li>🎓 Educación</li>
+              <li>✝ Funerarias</li>
+              <li>🍽 Restaurantes</li>
+              <li>✈ Viajes y Turismo</li>
+              <li>❤️ Salud y Bienestar</li>
+              <li>📦 Misceláneos</li>
+            </ul>
+
+          </div>
+        </div>
+      )}
 
     </header>
   );

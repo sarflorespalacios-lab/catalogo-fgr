@@ -803,3 +803,119 @@ body {
   gap: 25px;
   padding: 40px;
 }
+/* =========================
+   OVERLAY (fondo difuminado)
+========================= */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 15, 25, 0.35);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+/* =========================
+   PANEL LATERAL
+========================= */
+.menu-lateral {
+  width: 330px;
+  height: 100%;
+  padding: 25px;
+
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: -15px 0 40px rgba(0,0,0,0.25);
+
+  animation: slideMenu 0.35s ease;
+}
+
+/* =========================
+   BOTON CERRAR
+========================= */
+.menu-cerrar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-cerrar button {
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.menu-cerrar button:hover {
+  transform: scale(1.2);
+}
+
+/* =========================
+   LISTA
+========================= */
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.menu-lateral li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 14px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-weight: 500;
+  color: white;
+
+  transition: all 0.25s ease;
+}
+
+/* Hover elegante */
+.menu-lateral li:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateX(6px);
+}
+
+/* Efecto activo */
+.menu-lateral li.activo {
+  background: rgba(0, 200, 150, 0.25);
+  border: 1px solid rgba(0, 255, 200, 0.3);
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+@keyframes slideMenu {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
