@@ -1003,7 +1003,7 @@ body {
 }
 .categoria {
   display: inline-block;
-  background: #2ecc71;
+  background: hsl(251, 61%, 33%);
   color: white;
   padding: 5px 12px;
   border-radius: 20px;

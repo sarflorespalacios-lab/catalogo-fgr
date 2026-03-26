@@ -133,6 +133,9 @@ function Header({ setCategoria, setBusqueda }) {
               <li onClick={() => { setCategoria("miscelaneos"); setMenuAbierto(false); }}>
                 📦 Misceláneos
               </li>
+              <li onClick={() => { setCategoria("deportes"); setMenuAbierto(false); }}>
+                📦 Deportes
+              </li>
             </ul>
 
           </div>
