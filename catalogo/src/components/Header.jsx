@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-function Header() {
+function Header({ setCategoria, setBusqueda }) {
   const [user] = useAuthState(auth);
   const [menuAbierto, setMenuAbierto] = useState(false);
 
@@ -15,8 +15,54 @@ function Header() {
   return (
     <header className="header">
 
-      <h1 className="titulo">Catálogo FGR</h1>
+      {/* 🔹 PARTE SUPERIOR */}
+      <div className="header-top">
 
+        {/* LOGO */}
+        <img src="/img/FGR.png" alt="Escudos FGR" className="logo-fgr" />
+
+        {/* 🔥 BUSCADOR CONECTADO */}
+        <div className="buscador-header">
+          <input
+            type="text"
+            placeholder="Buscar descuentos..."
+            onChange={(e) => setBusqueda(e.target.value)}
+          />
+          <button>🔎</button>
+        </div>
+
+        {/* MENÚ DERECHO */}
+        <nav className="menu">
+
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "menu-link activo" : "menu-link"
+            }
+          >
+            🏠 Inicio
+          </NavLink>
+
+          <NavLink
+            to="/favoritos"
+            className={({ isActive }) =>
+              isActive ? "menu-link activo" : "menu-link"
+            }
+          >
+            ❤️ Favoritos
+          </NavLink>
+
+          <button
+            className="btn-menu"
+            onClick={() => setMenuAbierto(true)}
+          >
+            ☰
+          </button>
+
+        </nav>
+      </div>
+
+      {/* 🔹 USUARIO */}
       {user && (
         <div className="usuario-info">
           <p className="bienvenida">
@@ -29,56 +75,64 @@ function Header() {
         </div>
       )}
 
-      <nav className="menu">
-
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive ? "menu-link activo" : "menu-link"
-          }
-        >
-          🏠 Inicio
-        </NavLink>
-
-        <NavLink
-          to="/favoritos"
-          className={({ isActive }) =>
-            isActive ? "menu-link activo" : "menu-link"
-          }
-        >
-          ❤️ Favoritos
-        </NavLink>
-
-        {/* BOTÓN DEL MENÚ LATERAL */}
-        <button
-          className="btn-menu"
-          onClick={() => setMenuAbierto(true)}
-        >
-          ☰
-        </button>
-
-      </nav>
-
-      {/* MENU LATERAL */}
+      {/* 🔹 MENU LATERAL */}
       {menuAbierto && (
-        <div className="menu-overlay">
-          <div className="menu-lateral">
-
+        <div
+          className="menu-overlay"
+          onClick={() => setMenuAbierto(false)}
+        >
+          <div
+            className="menu-lateral"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="menu-cerrar">
               <button onClick={() => setMenuAbierto(false)}>✕</button>
             </div>
 
             <ul>
-              <li>💰 Créditos y Servicios Financieros</li>
-              <li>🛡 Seguros</li>
-              <li>🎬 Entretenimiento</li>
-              <li>🏨 Hoteles</li>
-              <li>🎓 Educación</li>
-              <li>✝ Funerarias</li>
-              <li>🍽 Restaurantes</li>
-              <li>✈ Viajes y Turismo</li>
-              <li>❤️ Salud y Bienestar</li>
-              <li>📦 Misceláneos</li>
+              <li onClick={() => { setCategoria("todas"); setMenuAbierto(false); }}>
+                🏠 Todas
+              </li>
+
+              <li onClick={() => { setCategoria("creditos"); setMenuAbierto(false); }}>
+                💰 Créditos y Servicios Financieros
+              </li>
+
+              <li onClick={() => { setCategoria("seguros"); setMenuAbierto(false); }}>
+                🛡 Seguros
+              </li>
+
+              <li onClick={() => { setCategoria("entretenimiento"); setMenuAbierto(false); }}>
+                🎬 Entretenimiento
+              </li>
+
+              <li onClick={() => { setCategoria("hoteles"); setMenuAbierto(false); }}>
+                🏨 Hoteles
+              </li>
+
+              <li onClick={() => { setCategoria("educacion"); setMenuAbierto(false); }}>
+                🎓 Educación
+              </li>
+
+              <li onClick={() => { setCategoria("funerarias"); setMenuAbierto(false); }}>
+                ✝ Funerarias
+              </li>
+
+              <li onClick={() => { setCategoria("restaurantes"); setMenuAbierto(false); }}>
+                🍽 Restaurantes
+              </li>
+
+              <li onClick={() => { setCategoria("viajes"); setMenuAbierto(false); }}>
+                ✈ Viajes y Turismo
+              </li>
+
+              <li onClick={() => { setCategoria("salud"); setMenuAbierto(false); }}>
+                ❤️ Salud y Bienestar
+              </li>
+
+              <li onClick={() => { setCategoria("miscelaneos"); setMenuAbierto(false); }}>
+                📦 Misceláneos
+              </li>
             </ul>
 
           </div>

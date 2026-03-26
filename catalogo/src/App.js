@@ -10,8 +10,11 @@ import Login from "./pages/Login";
 import "./styles/catalogo.css";
 
 function App() {
-  const [user, setUser] = useState(undefined); // IMPORTANTE
+  const [user, setUser] = useState(undefined);
   const [loading, setLoading] = useState(true);
+
+  const [categoria, setCategoria] = useState("todas");
+  const [busqueda, setBusqueda] = useState(""); // 🔥 NUEVO
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (usuario) => {
@@ -35,9 +38,19 @@ function App() {
     <BrowserRouter>
       {user ? (
         <>
-          <Header />
+          {/* 🔥 PASAMOS setBusqueda */}
+          <Header 
+            setCategoria={setCategoria} 
+            setBusqueda={setBusqueda} 
+          />
+
           <Routes>
-            <Route path="/" element={<Inicio />} />
+            {/* 🔥 PASAMOS busqueda */}
+            <Route 
+              path="/" 
+              element={<Inicio categoria={categoria} busqueda={busqueda} />} 
+            />
+
             <Route path="/favoritos" element={<Favoritos />} />
           </Routes>
         </>

@@ -2,11 +2,11 @@ import Marquesina from "../components/Marquesina";
 import Catalogo from "../components/Catalogo";
 import Footer from "../components/Footer";
 
-function Inicio() {
+function Inicio({ categoria, busqueda }) {
   return (
     <>
       <Marquesina />
-      <Catalogo />
+      <Catalogo categoria={categoria} busqueda={busqueda} />
       <Footer />
     </>
   );

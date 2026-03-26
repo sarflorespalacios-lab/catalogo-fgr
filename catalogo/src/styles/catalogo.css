@@ -463,12 +463,6 @@ body {
 
 /* ===== MENU ===== */
 
-.menu {
-  margin-top: 18px;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
 
 .menu-link {
   text-decoration: none;
@@ -919,4 +913,217 @@ body {
   to {
     opacity: 1;
   }
+}
+.header-top {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo-fgr {
+  height: 60px;
+  object-fit: contain;
+}
+.header {
+  background: #2f3e4d;
+  padding: 15px 30px;
+  color: white;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo-fgr {
+  height: 60px;
+}
+
+.menu {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.buscador-header {
+  display: flex;
+  gap: 5px;
+}
+
+.buscador-header input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  width: 250px;
+}
+
+.buscador-header button {
+  background: #1f2a36;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.usuario-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.bienvenida {
+  font-size: 14px;
+}
+
+.btn-logout {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.tarjeta {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+.categoria {
+  display: inline-block;
+  background: #2ecc71;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.imagen-container img {
+  width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+.titulo {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.descripcion {
+  font-size: 14px;
+  color: #555;
+}
+.btn-ver {
+  background: #2f3e4d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.estado {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #333;
+}
+/* ===== FIX HEADER LAYOUT ===== */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Contenedor superior (logo + menu) */
+.header-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo izquierda */
+.logo-fgr {
+  height: 60px;
+}
+
+/* ===== MENU ARRIBA DERECHA ===== */
+
+.menu {
+  position: absolute;
+  top: 0px;
+  right: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(255,255,255,0.15);
+  padding: 8px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+/* Botones del menú */
+.menu-link {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Botón hamburguesa */
+.btn-menu {
+  background: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* ===== ARREGLAR BUSCADOR ===== */
+
+.buscador-header {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px; /* ajusta si lo quieres más abajo */
+}
+
+/* Evita que herede cosas raras del flex */
+.header-top {
+  position: relative;
+}
+.buscador-header input {
+  width: 300px;
+}
+
+.buscador-header {
+  display: flex;
+  gap: 8px;
+}
+.menu-lateral {
+  overflow-y: auto;
+  max-height: 100vh;
+  padding-bottom: 40px;
+}
+.menu-lateral::-webkit-scrollbar {
+  width: 6px;
+}
+
+.menu-lateral::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
 }

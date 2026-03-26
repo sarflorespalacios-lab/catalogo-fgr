@@ -1,31 +1,39 @@
 function Tarjeta({ descuento }) {
 
   return (
-    <div className="tarjeta-descuento">
+    <div className="tarjeta">
 
-      <div className="badge-categoria">
-        👁 {descuento.categoria}
+      {/* 🟢 CATEGORÍA */}
+      <span className="categoria">
+        {descuento.categoria.toUpperCase()}
+      </span>
+
+      {/* 🖼 IMAGEN */}
+      <div className="imagen-container">
+        <img 
+          src={descuento.imagen || "https://via.placeholder.com/150"} 
+          alt={descuento.nombre} 
+        />
       </div>
 
-      <div className="logo-descuento">
-        <img src={descuento.imagen} alt={descuento.titulo} />
-      </div>
-
-      <h3 className="titulo-descuento">
-        {descuento.titulo}
+      {/* 🏷 TÍTULO */}
+      <h3 className="titulo">
+        {descuento.nombre}
       </h3>
 
-      <p className="descripcion-descuento">
+      {/* 📄 DESCRIPCIÓN */}
+      <p className="descripcion">
         {descuento.descripcion}
       </p>
 
-      <div className="acciones-descuento">
+      {/* 🔘 ACCIONES */}
+      <div className="acciones">
 
         <button className="btn-ver">
           Ver más
         </button>
 
-        <div className="estado-promocion">
+        <div className="estado">
           Promoción finaliza en:
           <strong> {descuento.estado}</strong>
         </div>
