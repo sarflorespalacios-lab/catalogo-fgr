@@ -1127,3 +1127,30 @@ body {
   background: rgba(255,255,255,0.3);
   border-radius: 10px;
 }
+/* ===== FIX RESPONSIVE HEADER ===== */
+
+@media (max-width: 768px) {
+
+  .header-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .menu {
+    position: static; /* 🔥 QUITA el absolute */
+    width: 100%;
+    justify-content: center;
+    margin-top: 5px;
+  }
+
+  .buscador-header {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .buscador-header input {
+    width: 80%;
+  }
+
+}
